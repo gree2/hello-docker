@@ -1,0 +1,1 @@
+docker run -it --link gree2/elasticsearch --name gkibana -p 5601:5601 gree2/kibana /bin/bash
