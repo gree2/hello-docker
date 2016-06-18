@@ -1,0 +1,193 @@
+[
+    {
+        "Id": "a4ea1daf52a8e210dd24ebc5342ef8573fccc9f56e340e34b198fef4139b1f78",
+        "Created": "2016-06-18T03:16:41.956606518Z",
+        "Path": "logstash",
+        "Args": [
+            "-e",
+            "input { stdin { } } output{ elasticsearch { hosts =\u003e [\"elasticsearch:9200\"] } }"
+        ],
+        "State": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2016-06-18T03:16:42.303567701Z",
+            "FinishedAt": "2016-06-18T03:17:03.380908407Z"
+        },
+        "Image": "sha256:d283128d7938258554b3ab7306110d1f1bfd4b106e48f4654719bf0df18f44a0",
+        "ResolvConfPath": "/mnt/sda1/var/lib/docker/containers/a4ea1daf52a8e210dd24ebc5342ef8573fccc9f56e340e34b198fef4139b1f78/resolv.conf",
+        "HostnamePath": "/mnt/sda1/var/lib/docker/containers/a4ea1daf52a8e210dd24ebc5342ef8573fccc9f56e340e34b198fef4139b1f78/hostname",
+        "HostsPath": "/mnt/sda1/var/lib/docker/containers/a4ea1daf52a8e210dd24ebc5342ef8573fccc9f56e340e34b198fef4139b1f78/hosts",
+        "LogPath": "/mnt/sda1/var/lib/docker/containers/a4ea1daf52a8e210dd24ebc5342ef8573fccc9f56e340e34b198fef4139b1f78/a4ea1daf52a8e210dd24ebc5342ef8573fccc9f56e340e34b198fef4139b1f78-json.log",
+        "Name": "/dockerelk_logstash_1",
+        "RestartCount": 0,
+        "Driver": "aufs",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "default",
+            "PortBindings": {
+                "22/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": ""
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": [],
+            "CapAdd": null,
+            "CapDrop": null,
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "",
+            "Cgroup": "",
+            "Links": [
+                "/dockerelk_elasticsearch_1:/dockerelk_logstash_1/elasticsearch_1",
+                "/dockerelk_elasticsearch_1:/dockerelk_logstash_1/dockerelk_elasticsearch_1",
+                "/dockerelk_elasticsearch_1:/dockerelk_logstash_1/elasticsearch"
+            ],
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "StorageOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DiskQuota": 0,
+            "KernelMemory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": -1,
+            "OomKillDisable": false,
+            "PidsLimit": 0,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "BlkioIOps": 0,
+            "BlkioBps": 0,
+            "SandboxSize": 0
+        },
+        "GraphDriver": {
+            "Name": "aufs",
+            "Data": null
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "a4ea1daf52a8",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "22/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/",
+                "LOGSTASH_HOME=/opt/logstash"
+            ],
+            "Cmd": null,
+            "Image": "gree2/logstash",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "logstash",
+                "-e",
+                "input { stdin { } } output{ elasticsearch { hosts =\u003e [\"elasticsearch:9200\"] } }"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "7b5b573cf867dd31179bc034d59063f9bc3251a7f6e2f66976d1010a0bff9690",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "dockerelk",
+                "com.docker.compose.service": "logstash",
+                "com.docker.compose.version": "1.7.0"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "fd3ebd19fe0915b6a270f128cfeb0a2f0467218ebdc01e6550abeae3161e7abd",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": null,
+            "SandboxKey": "/var/run/docker/netns/fd3ebd19fe09",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "178ca98f0bfd0b5fd02f78b776f8bf18e5da6cef526d86b6a949f653e2ee5454",
+                    "EndpointID": "",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": ""
+                }
+            }
+        }
+    }
+]

@@ -1,1 +1,1 @@
-docker run -it --name glogstash gree2/logstash
+docker run -it --link gelasticsearch --name glogstash gree2/logstash logstash -e 'input { stdin { } } output{ elasticsearch { } }'

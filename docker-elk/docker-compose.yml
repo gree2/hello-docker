@@ -1,0 +1,21 @@
+elasticsearch:
+  image: gree2/elasticsearch
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+    - "22"
+logstash:
+  image: gree2/logstash
+  ports:
+    - "22"
+  links:
+    - elasticsearch:elasticsearch
+  # entrypoint: logstash -e 'input { stdin { } } output{ elasticsearch {  } }'
+  entrypoint: logstash -e 'input { stdin { } } output{ elasticsearch { hosts => ["elasticsearch:9200"] } }'
+kibana:
+  image: gree2/kibana
+  ports:
+    - "5601:5601"
+    - "22"
+  links:
+    - elasticsearch:elasticsearch

@@ -1,0 +1,1 @@
+docker build -t gree2/elk .

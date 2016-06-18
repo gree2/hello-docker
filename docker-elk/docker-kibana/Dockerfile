@@ -19,6 +19,3 @@ EXPOSE 5601
 
 # if using system v version of init
 RUN update-rc.d kibana defaults 95 10
-# # if using systemd
-# RUN /bin/systemctl daemon-reload
-# RUN /bin/systemctl enable kibana.service
