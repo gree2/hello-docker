@@ -23,26 +23,34 @@ RUN ln -s ${LOGSTASH_HOME}/bin/logstash /usr/bin/logstash
 ENV KIBANA_HOME /opt/kibana
 RUN ln -s ${KIBANA_HOME}/bin/kibana /usr/bin/kibana
 
-# add group/user 
-RUN groupadd elasticsearch; \
-    useradd --gid elasticsearch --home-dir /home/elasticsearch --create-home --shell /bin/bash elasticsearch; \
-    chown -R elasticsearch:elasticsearch ${ES_HOME}; \
+# change ownership
+RUN chown -R elasticsearch:elasticsearch ${ES_HOME}; \
     chown -R elasticsearch:elasticsearch ${LOGSTASH_HOME}; \
     chown -R elasticsearch:elasticsearch ${KIBANA_HOME}; \
     chown -R elasticsearch:elasticsearch /usr/bin/elasticsearch; \
     chown -R elasticsearch:elasticsearch /usr/bin/logstash; \
     chown -R elasticsearch:elasticsearch /usr/bin/kibana
 
-ADD config.supervisord.sh /usr/bin/config.supervisord.sh
+# ADD config.supervisord.sh /usr/bin/config.supervisord.sh
 
-ENV LOGSTASH_CMD "logstash -e 'input { stdin { } } output{ elasticsearch { } }'"
-# config.supervisord.sh               program_name    program_bin     program_home     run_as
-RUN /usr/bin/config.supervisord.sh    "elasticsearch" elasticsearch   ${ES_HOME}       "elasticsearch" \
-    && /usr/bin/config.supervisord.sh "logstash"      ${LOGSTASH_CMD} ${LOGSTASH_HOME} "elasticsearch" \
-    && /usr/bin/config.supervisord.sh "kibana"        kibana          ${KIBANA_HOME}   "elasticsearch" \
+# ENV LOGSTASH_CMD "logstash -e 'input { stdin { } } output{ elasticsearch { } }'"
+# # config.supervisord.sh            program_name    program_bin       program_home     run_as
+# RUN /usr/bin/config.supervisord.sh "elasticsearch" "elasticsearch"   "${ES_HOME}"       "elasticsearch"
+# RUN /usr/bin/config.supervisord.sh "logstash"      "${LOGSTASH_CMD}" "${LOGSTASH_HOME}" "elasticsearch"
+# RUN /usr/bin/config.supervisord.sh "kibana"        "kibana"          "${KIBANA_HOME}"   "elasticsearch"
+
+# EXPOSE 5601 9200 9300 5000 5044
+
+# RUN echo [supervisord] | tee -a /etc/supervisor/supervisord.conf; \
+#     echo nodaemon=true | tee -a /etc/supervisor/supervisord.conf
+
+# CMD /usr/sbin/sshd && supervisord
+
+RUN update-rc.d elasticsearch defaults 95 10 \
+    && update-rc.d kibana     defaults 95 10 \
+    && /etc/init.d/elasticsearch start       \
+    && /etc/init.d/elasticsearch kibana
 
 EXPOSE 5601 9200 9300 5000 5044
-RUN echo [supervisord] | tee -a /etc/supervisor/supervisord.conf; \
-    echo nodaemon=true | tee -a /etc/supervisor/supervisord.conf
 
-CMD /usr/sbin/sshd && supervisord
+# ENTRYPOINT logstash -e 'input { stdin { } } output{ elasticsearch { } }'

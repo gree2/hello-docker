@@ -1,7 +1,16 @@
 FROM ubuntu:trusty
 MAINTAINER gree2
 
-RUN apt-get update; apt-get install -y unzip openjdk-7-jre-headless wget supervisor docker.io openssh-server
+RUN apt-get update          \
+    && apt-get install -y   \
+        apt-transport-https \
+        curl           \
+        docker.io      \
+        openjdk-7-jre-headless \
+        openssh-server \
+        supervisor     \
+        unzip          \
+        wget
 
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64/
 RUN echo 'root:node' | chpasswd
