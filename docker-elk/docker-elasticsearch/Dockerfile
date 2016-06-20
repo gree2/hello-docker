@@ -9,9 +9,11 @@ RUN wget -q https://download.elastic.co/elasticsearch/release/org/elasticsearch/
 tar zxf /tmp/elasticsearch-2.3.3.tar.gz -C /opt && \
 rm /tmp/elasticsearch-2.3.3.tar.gz
 
+
 # setup env
 ENV ELASTICSEARCH_HOME /opt/elasticsearch-2.3.3
 RUN ln -s $ELASTICSEARCH_HOME/bin/elasticsearch /usr/bin/elasticsearch
+RUN sed -i 's/# network.host: 192.168.0.1/network.host: 0.0.0.0/g' $ELASTICSEARCH_HOME/config/elasticsearch.yml
 
 # add group/user 
 RUN groupadd elasticsearch; \

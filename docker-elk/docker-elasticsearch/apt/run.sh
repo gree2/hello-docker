@@ -1,0 +1,1 @@
+docker run -it --name gelasticsearch -p 9200:9200 -p 9300:9300 gree2/elasticsearch /bin/bash
