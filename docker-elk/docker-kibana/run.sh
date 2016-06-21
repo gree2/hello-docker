@@ -1,1 +1,0 @@
-docker run -it --link gelasticsearch --name gkibana -p 5601:5601 gree2/kibana

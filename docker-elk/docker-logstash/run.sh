@@ -1,2 +1,1 @@
-# docker run -it --link gelasticsearch --name glogstash gree2/logstash logstash -e 'input { stdin { } } output{ elasticsearch { } }'
-docker run -it --link gelasticsearch --name glogstash gree2/logstash logstash -e 'input { stdin { } } output{ elasticsearch { hosts => ["192.168.99.100:9200"] } }'
+docker run -it --rm --name glogstash gree2/logstash logstash -e 'input { stdin { } } output{ elasticsearch { hosts => ["192.168.99.100:9200"] } }'
